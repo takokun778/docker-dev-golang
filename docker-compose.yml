@@ -1,0 +1,17 @@
+
+version: '3'
+services:
+    dev:
+        container_name: ${UNAME}_dev
+        build:
+            context: .
+            args: 
+                - UID=${UID}
+                - GID=${GID}
+                - UNAME=${UNAME}
+                - GO_VERSION=${GO_VERSION}
+        tty: true
+        volumes: 
+            - ./src:/home/${UNAME}/src
+        ports:
+            - "8080:8080"
